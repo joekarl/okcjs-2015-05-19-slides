@@ -26,7 +26,7 @@ Slides for lightning talk about production ready web APIs
   * Log rotation
   * Centralized logging
 * Security
-  * HTTPs for user information
-  * SQL injection
+  * HTTPS for user information
+  * Input validation / SQL injection
   * Rate limiting
   * Service isolation
