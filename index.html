@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+    body {
+      font-family: "Helvetica", "sans"
+    }
+    ul li {
+      font-size: 30px;
+      line-height: 60px;
+    }
+
+    .remark-code-line {
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="source">
+
+class: center, middle
+
+# Production quality web service checklist
+
+---
+
+class: center, middle
+
+## Karl Kirch
+## @joekarl
+
+---
+
+## The Basics
+
+* Version Control
+* Testing
+
+---
+
+## Build process
+
+* Repeatable builds
+  * Build your src 6 months from now
+  * Build on different machines
+  * Hosted NPM registry, vendored dependencies
+* Automation
+  * Gulp
+  * Grunt
+  * Some other task runner
+* Deployable artifacts
+  * tar.gz
+  * Nexus
+
+---
+
+## Deployment process
+
+* Automation
+  * CI
+  * Deploy tasks
+  *
+* Rollback / Redeploy strategy
+  * Deploy a build from the past
+  * Redeploy the current build
+  *
+* Zero downtime
+  * Rolling deploy
+  * Load balancing
+  * Nginx, PM2, Cluster, *Heroku like PAAS
+
+---
+
+## Monitoring
+
+* Healthchecks
+  * Know when your service is broken
+  * Automated error reporting
+  * Pager duty
+* Metrics
+  * How many 5xx errors your service has
+  * How many req/sec
+  * Percentile request time
+  * Custom metrics for business concerns
+  * New Relic, Datadog, statsd + graphite
+
+---
+
+## Logging
+
+* Centralized logging
+  * Avoid logging into production machines
+  * Logs are in one place
+  * Log search
+  * Heka, logstash, kibana, etc...
+* Log management
+  * Backups
+  * Log rotation
+  * Request AND error logs
+  * Log levels
+  * S3, logrotate, winston, bunyan
+
+---
+
+## Security
+
+* Service isolation
+  * Security groups (AWS)
+  * Avoid running services on the same machine
+* HTTPS
+  * Anything related to logins
+  * Personably identifiable information
+  * End to end HTTPS
+* Input validation
+  * Don't trust anything from the internet
+  * Assume malicious behavior
+  * Sql injection
+  * Large request attacks (ie file uploads)
+* Rate limiting
+  * DDOS
+  * Brute force attacks
+  * nginx, [node-rate-limiter](https://github.com/jhurliman/node-rate-limiter)
+
+---
+
+class: center, middle
+
+## Questions?
+
+  </textarea>
+  <script src="remark.min.js">
+  </script>
+  <script>
+    var slideshow = remark.create();
+  </script>
+</body>
+</html>
